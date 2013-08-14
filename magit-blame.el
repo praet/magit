@@ -37,33 +37,39 @@
 (defcustom magit-blame-ignore-whitespace t
   "Ignore whitespace when determining blame information."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-blame-header
   '((t :inherit magit-header))
   "Face for blame header."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.2.0"))
 
 (defface magit-blame-sha1
   '((t :inherit (magit-log-sha1
                  magit-blame-header)))
   "Face for blame sha1."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.2.0"))
 
 (defface magit-blame-culprit
   '((t :inherit magit-blame-header))
   "Face for blame culprit."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.2.0"))
 
 (defface magit-blame-time
   '((t :inherit magit-blame-header))
   "Face for blame time."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.2.0"))
 
 (defface magit-blame-subject
   '((t :inherit (magit-log-message magit-blame-header)))
   "Face for blame tag line."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.2.0"))
 
 (defconst magit-blame-map
   (let ((map (make-sparse-keymap "Magit:Blame")))
@@ -187,7 +193,8 @@ boundaries from BEG to END, the return value is nil."
 (defcustom magit-time-format-string "%Y-%m-%dT%T%z"
   "How to format time in magit-blame header."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.2.0"))
 
 (defun magit-blame-decode-time (unixtime &optional tz)
   "Decode UNIXTIME into (HIGH LOW) format.

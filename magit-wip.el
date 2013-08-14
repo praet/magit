@@ -61,7 +61,8 @@
      :background "Grey07"
      :foreground "LightSkyBlue4"))
   "Face for git-wip labels shown in log buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.2.0"))
 
 (defun magit-log-get-wip-color (suffix)
   (list (concat "(WIP) " suffix)
@@ -91,7 +92,8 @@ The following `format'-like specs are supported:
 %r the name of the file being saved,
    relative to the repository root."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.2.0"))
 
 (defcustom magit-wip-echo-area-message "Wrote %f (wip)"
   "Message shown in the echo area after creating a git-wip commit.
@@ -102,7 +104,8 @@ The following `format'-like specs are supported:
 %r the name of the file being saved,
    relative to the repository root."
   :group 'magit
-  :type '(choice (const :tag "No message" nil) string))
+  :type '(choice (const :tag "No message" nil) string)
+  :package-version '(magit . "1.2.0"))
 
 (defvar magit-wip-save-mode-lighter " Wip")
 

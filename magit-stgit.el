@@ -49,32 +49,38 @@
 (defcustom magit-stgit-executable "stg"
   "The name of the StGit executable."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-stgit-applied
   '((t :inherit magit-diff-add))
   "Face for an applied stgit patch."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-stgit-current
   '((t :inherit magit-item-highlight))
   "Face for the current stgit patch."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-stgit-other
   '((t :inherit magit-diff-del))
   "Face for a non-applied stgit patch."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-stgit-marked
   '((t :inherit magit-item-mark))
   "Face for a marked stgit patch."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-stgit-empty
   '((t :inherit magit-item-mark))
   "Face for an empty stgit patch."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 ;;; Common code:
 

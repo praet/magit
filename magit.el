@@ -101,7 +101,8 @@ Use the function by the same name instead of this variable.")
 (defgroup magit nil
   "Controlling Git from Emacs."
   :prefix "magit-"
-  :group 'tools)
+  :group 'tools
+  :package-version '(magit . "0.6.0"))
 
 (defun magit-set-variable-and-refresh (symbol value)
   "Set SYMBOL to VALUE and call `magit-refresh-all'."
@@ -114,20 +115,23 @@ Use the function by the same name instead of this variable.")
 (defcustom magit-git-executable "git"
   "The name of the Git executable."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "0.7.0"))
 
 (defcustom magit-gitk-executable
   (concat (file-name-directory magit-git-executable) "gitk")
   "The name of the Gitk executable."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-repo-dirs nil
   "Directories containing Git repositories.
 Magit will look into these directories for Git repositories and
 offer them as choices for `magit-status'."
   :group 'magit
-  :type '(repeat string))
+  :type '(repeat string)
+  :package-version '(magit . "0.8.0"))
 
 (defcustom magit-repo-dirs-depth 3
   "The maximum depth to look for Git repos.
@@ -135,7 +139,8 @@ When looking for a Git repository below the directories in
 `magit-repo-dirs', Magit will only descend this many levels
 deep."
   :group 'magit
-  :type 'integer)
+  :type 'integer
+  :package-version '(magit . "0.8.0"))
 
 (custom-add-to-group 'magit 'vc-follow-symlinks 'custom-variable)
 
@@ -154,7 +159,8 @@ t          ask if --set-upstream should be used.
                  (const :tag "Ask" t)
                  (const :tag "Ask if not set" askifnotset)
                  (const :tag "Refuse" refuse)
-                 (const :tag "Always" dontask)))
+                 (const :tag "Always" dontask))
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-refresh-file-buffer-hook
   '(magit-revert-buffer)
@@ -170,7 +176,8 @@ still current when they return which can be easily done using:
   (with-current-buffer (current-buffer) DO-STUFF)"
   :group 'magit
   :type 'hook
-  :options '(magit-revert-buffer magit-update-vc-modeline))
+  :options '(magit-revert-buffer magit-update-vc-modeline)
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-save-some-buffers t
   "Whether \\[magit-status] saves modified buffers before running.
@@ -181,7 +188,8 @@ t          ask which buffers to save.
   :group 'magit
   :type '(choice (const :tag "Never" nil)
                  (const :tag "Ask" t)
-                 (const :tag "Save without asking" dontask)))
+                 (const :tag "Save without asking" dontask))
+  :package-version '(magit . "0.7.0"))
 
 (defcustom magit-save-some-buffers-predicate
   'magit-save-buffers-predicate-tree-only
@@ -192,7 +200,8 @@ the same name is non-nil."
   :group 'magit
   :type '(radio (function-item magit-save-buffers-predicate-tree-only)
                 (function-item magit-save-buffers-predicate-all)
-                (function :tag "Other")))
+                (function :tag "Other"))
+  :package-version '(magit . "1.0.0"))
 
 (defcustom magit-default-tracking-name-function
   'magit-default-tracking-name-remote-plus-branch
@@ -204,42 +213,50 @@ which generates a tracking name of the form \"REMOTE-BRANCHNAME\"."
   :group 'magit
   :type '(radio (function-item magit-default-tracking-name-remote-plus-branch)
                 (function-item magit-default-tracking-name-branch-only)
-                (function :tag "Other")))
+                (function :tag "Other"))
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-commit-mode-show-buttons t
   "Whether to show navigation buttons in the *magit-commit* buffer."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-commit-signoff nil
   "Add the \"Signed-off-by:\" line when committing."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "0.7.0"))
 
 (defcustom magit-commit-gpgsign nil
   "Use GPG to sign commits."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-commit-no-verify nil
   "Bypass the pre-commit and commit-msg hooks when committing."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-sha1-abbrev-length 7
   "The number of digits to show when a sha1 is displayed in abbreviated form."
   :group 'magit
-  :type 'integer)
+  :type 'integer
+  :package-version '(magit . "1.2.0"))
 
 (defcustom magit-log-cutoff-length 100
   "The maximum number of commits to show in the log and whazzup buffers."
   :group 'magit
-  :type 'integer)
+  :type 'integer
+  :package-version '(magit . "0.7.0"))
 
 (defcustom magit-log-infinite-length 99999
   "Number of log used to show as maximum for `magit-log-cutoff-length'."
   :group 'magit
-  :type 'integer)
+  :type 'integer
+  :package-version '(magit . "0.8.0"))
 
 (defcustom magit-log-auto-more nil
   "Insert more log entries automatically when moving past the last entry.
@@ -247,17 +264,20 @@ which generates a tracking name of the form \"REMOTE-BRANCHNAME\"."
 Only considered when moving past the last entry with
 `magit-goto-*-section' commands."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-log-show-author-date t
   "Show author and date for each commit in short log mode."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-log-show-gpg-status nil
   "Display signature verification information as part of the log."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-status-insert-tags-line nil
   "Whether to display related tags in the status buffer.
@@ -265,7 +285,8 @@ Only considered when moving past the last entry with
 Also see option `magit-status-tags-line-subject' which controls how
 this information is displayed."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-status-tags-line-subject 'head
   "Whether tag or head is the subject on tags line in status buffer.
@@ -289,25 +310,29 @@ Option `magit-status-insert-tags-line' has to be non-nil for this
 information to be displayed at all."
   :group 'magit
   :type '(choice (const :tag "tags are the subjects" tag)
-                 (const :tag "head is the subject" head)))
+                 (const :tag "head is the subject" head))
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-status-verbose-untracked t
   "Whether to show the contents of or just the untracked directory."
   :group 'magit
   :type '(choice (const :tag "show only directory" nil)
-                 (const :tag "show directory contents" t)))
+                 (const :tag "show directory contents" t))
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-process-popup-time -1
   "Popup the process buffer if a command takes longer than this many seconds."
   :group 'magit
   :type '(choice (const :tag "Never" -1)
                  (const :tag "Immediately" 0)
-                 (integer :tag "After this many seconds")))
+                 (integer :tag "After this many seconds"))
+  :package-version '(magit . "0.7.0"))
 
 (defcustom magit-revert-item-confirm t
   "Require acknowledgment before reverting an item."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.0.0"))
 
 (defcustom magit-remote-ref-format 'branch-then-remote
   "What format to use for autocompleting refs, in pariticular for remotes.
@@ -323,7 +348,8 @@ listed as \"remotes/upstream/next\" by \"git branch -l -a\" will
 be \"upstream/next\"."
   :group 'magit
   :type '(choice (const :tag "name (remote)" branch-then-remote)
-                 (const :tag "remote/name" remote-slash-branch)))
+                 (const :tag "remote/name" remote-slash-branch))
+  :package-version '(magit . "0.8.2"))
 
 (defcustom magit-process-connection-type (not (eq system-type 'cygwin))
   "Connection type used for the git process.
@@ -332,13 +358,15 @@ If nil, use pipes: this is usually more efficient, and works on Cygwin.
 If t, use ptys: this enables magit to prompt for passphrases when needed."
   :group 'magit
   :type '(choice (const :tag "pipe" nil)
-                 (const :tag "pty" t)))
+                 (const :tag "pty" t))
+  :package-version '(magit . "0.8.0"))
 
 (defcustom magit-process-yes-or-no-prompt
   " [\[(]\\([Yy]\\(?:es\\)?\\)[/|]\\([Nn]o?\\)[\])]\\? ?$"
   "Regexp matching Yes-or-No prompts of git and its subprocesses."
   :group 'magit
-  :type 'regexp)
+  :type 'regexp
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-process-password-prompts
   '("^\\(Enter \\)?[Pp]assphrase\\( for key '.*'\\)?: ?$"
@@ -347,13 +375,15 @@ If t, use ptys: this enables magit to prompt for passphrases when needed."
     "^Yubikey for .*: ?$")
   "List of regexps matching password prompts of git and its subprocesses."
   :group 'magit
-  :type '(repeat (regexp)))
+  :type '(repeat (regexp))
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-process-username-prompts
   '("^Username for '.*': ?$")
   "List of regexps matching username prompts of git and its subprocesses."
   :group 'magit
-  :type '(repeat (regexp)))
+  :type '(repeat (regexp))
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-completing-read-function 'magit-builtin-completing-read
   "Function to be called when requesting input from the user."
@@ -361,7 +391,8 @@ If t, use ptys: this enables magit to prompt for passphrases when needed."
   :type '(radio (function-item magit-iswitchb-completing-read)
                 (function-item magit-ido-completing-read)
                 (function-item magit-builtin-completing-read)
-                (function :tag "Other")))
+                (function :tag "Other"))
+  :package-version '(magit . "1.0.0"))
 
 (defcustom magit-create-branch-behaviour 'at-head
   "Where magit will create a new branch if not supplied a branchname or ref.
@@ -371,7 +402,8 @@ of your current branch, while the value 'at-point means magit
 will try to find a valid reference at point..."
   :group 'magit
   :type '(choice (const :tag "at HEAD" at-head)
-                 (const :tag "at point" at-point)))
+                 (const :tag "at point" at-point))
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-status-buffer-switch-function 'pop-to-buffer
   "Function for `magit-status' to use for switching to the status buffer.
@@ -380,12 +412,14 @@ The function is given one argument, the status buffer."
   :group 'magit
   :type '(radio (function-item switch-to-buffer)
                 (function-item pop-to-buffer)
-                (function :tag "Other")))
+                (function :tag "Other"))
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-restore-window-configuration nil
   "Whether to restore old window configuration when killing a Magit buffer."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defcustom magit-rewrite-inclusive t
   "Whether magit includes the selected base commit in a rewrite operation.
@@ -407,7 +441,8 @@ cumbersome to use from the status buffer.
   :group 'magit
   :type '(choice (const :tag "Always" t)
                  (const :tag "Never" nil)
-                 (const :tag "Ask"   ask)))
+                 (const :tag "Ask"   ask))
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-highlight-whitespace t
   "Specify where to highlight whitespace errors.
@@ -418,14 +453,16 @@ See `magit-highlight-trailing-whitespace',
   :type '(choice (const :tag "Always" t)
                  (const :tag "Never" nil)
                  (const :tag "In status buffer" status))
-  :set 'magit-set-variable-and-refresh)
+  :set 'magit-set-variable-and-refresh
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-highlight-trailing-whitespace t
   "Whether to highlight whitespace at the end of a line in diffs.
 Used only when `magit-highlight-whitespace' is non-nil."
   :group 'magit
   :type 'boolean
-  :set 'magit-set-variable-and-refresh)
+  :set 'magit-set-variable-and-refresh
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-highlight-indentation nil
   "Highlight the \"wrong\" indentation style.
@@ -445,7 +482,8 @@ many spaces.  Otherwise, highlight neither."
                        (choice (const :tag "Tabs" tabs)
                                (integer :tag "Spaces" :value ,tab-width)
                                (const :tag "Neither" nil))))
-  :set 'magit-set-variable-and-refresh)
+  :set 'magit-set-variable-and-refresh
+  :package-version '(magit . "1.1.0"))
 
 (defcustom magit-diff-refine-hunk nil
   "Show fine (word-granularity) differences within diff hunks.
@@ -462,7 +500,8 @@ There are three possible settings:
   :type '(choice (const :tag "Never" nil)
                  (const :tag "Selected only" t)
                  (const :tag "All" all))
-  :set 'magit-set-variable-and-refresh)
+  :set 'magit-set-variable-and-refresh
+  :package-version '(magit . "1.2.0"))
 
 ;; Not an option to avoid advertising it.
 (defvar magit-rigid-key-bindings nil
@@ -477,74 +516,88 @@ set before loading libary `magit'.")
   "Customize the appearance of Magit."
   :prefix "magit-"
   :group 'faces
-  :group 'magit)
+  :group 'magit
+  :package-version '(magit . "1.0.0"))
 
 (defface magit-header
   '((t :inherit header-line))
   "Face for generic header lines.
 
 Many Magit faces inherit from this one by default."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-section-title
   '((t :inherit magit-header))
   "Face for section titles."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-branch
   '((t :inherit magit-header))
   "Face for branches."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-tag
   '((t :inherit magit-header))
   "Face for tags."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-diff-file-header
   '((t :inherit diff-file-header))
   "Face for diff file header lines."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-diff-hunk-header
   '((t :inherit diff-hunk-header))
   "Face for diff hunk header lines."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-diff-add
   '((t :inherit diff-added))
   "Face for lines in a diff that have been added."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-diff-merge-current
   '((t :inherit font-lock-preprocessor-face))
   "Face for merge conflict marker 'current' line."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-diff-merge-separator
   '((t :inherit font-lock-preprocessor-face))
   "Face for merge conflict marker seperator."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-diff-merge-diff3-separator
   '((t :inherit font-lock-preprocessor-face))
   "Face for merge conflict marker seperator."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-diff-merge-proposed
   '((t :inherit font-lock-preprocessor-face))
   "Face for merge conflict marker 'proposed' line."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-diff-none
   '((t :inherit diff-context))
   "Face for lines in a diff that are unchanged."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-diff-del
   '((t :inherit diff-removed))
   "Face for lines in a diff that have been deleted."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-log-graph
   '((((class color) (background light))
@@ -552,7 +605,8 @@ Many Magit faces inherit from this one by default."
     (((class color) (background dark))
      :foreground "grey80"))
   "Face for the graph element of the log output."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.0.0"))
 
 (defface magit-log-sha1
   '((((class color) (background light))
@@ -560,7 +614,8 @@ Many Magit faces inherit from this one by default."
     (((class color) (background dark))
      :foreground "tomato"))
   "Face for the sha1 element of the log output."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.0"))
 
 (defface magit-log-author
   '((((class color) (background light))
@@ -568,23 +623,27 @@ Many Magit faces inherit from this one by default."
     (((class color) (background dark))
      :foreground "tomato"))
   "Face for the author element of the log output."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-author-date-cutoff
   '((t :inherit magit-log-author
        :bold t))
   "Face for the author element's cutoff mark."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-date
   '((t))
   "Face for the date element of the log output."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-message
   '((t))
   "Face for the message element of the log output."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.0"))
 
 (defface magit-item-highlight
   '((t :bold t))
@@ -598,12 +657,14 @@ have any effect.
 
 To disable highlighting of the current item completely, make this
 face inherit from `default' and remove all other attributes."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-item-mark
   '((t :inherit secondary-selection))
   "Face for highlighting marked item."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-log-head-label-bisect-good
   '((((class color) (background light))
@@ -615,7 +676,8 @@ face inherit from `default' and remove all other attributes."
      :background "light green"
      :foreground "dark olive green"))
   "Face for good bisect refs."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.1"))
 
 (defface magit-log-head-label-bisect-bad
   '((((class color) (background light))
@@ -627,7 +689,8 @@ face inherit from `default' and remove all other attributes."
      :background "IndianRed1"
      :foreground "IndianRed4"))
   "Face for bad bisect refs."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.1"))
 
 (defface magit-log-head-label-remote
   '((((class color) (background light))
@@ -639,7 +702,8 @@ face inherit from `default' and remove all other attributes."
      :background "Grey11"
      :foreground "DarkSeaGreen2"))
   "Face for remote branch head labels shown in log buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.0"))
 
 (defface magit-log-head-label-tags
   '((((class color) (background light))
@@ -651,7 +715,8 @@ face inherit from `default' and remove all other attributes."
      :background "LemonChiffon1"
      :foreground "goldenrod4"))
   "Face for tag labels shown in log buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.1"))
 
 (defface magit-log-head-label-patches
   '((((class color) (background light))
@@ -663,12 +728,14 @@ face inherit from `default' and remove all other attributes."
      :background "IndianRed1"
      :foreground "IndianRed4"))
   "Face for Stacked Git patches."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.0.0"))
 
 (defface magit-whitespace-warning-face
   '((t :inherit trailing-whitespace))
   "Face for highlighting whitespace errors in Magit diffs."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-log-head-label-local
   '((((class color) (background light))
@@ -680,7 +747,8 @@ face inherit from `default' and remove all other attributes."
      :background "Grey13"
      :foreground "LightSkyBlue1"))
   "Face for local branch head labels shown in log buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "0.8.0"))
 
 (defface magit-log-head-label-default
   '((((class color) (background light))
@@ -690,14 +758,16 @@ face inherit from `default' and remove all other attributes."
      :box t
      :background "Grey50"))
   "Face for unknown ref labels shown in log buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-valid-signature
   (if (require 'epa nil t)
       '((t :inherit epa-validity-high))
     '((t :weight bold :foreground "PaleTurquoise")))
   "Face for valid gpg signatures."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-commit
   '((((class color) (background light))
@@ -709,17 +779,20 @@ face inherit from `default' and remove all other attributes."
      :background "LemonChiffon1"
      :foreground "goldenrod4"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-amend
   '((t :inherit magit-log-reflog-label-commit))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-merge
   '((t :inherit magit-log-reflog-label-commit))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-checkout
   '((((class color) (background light))
@@ -731,7 +804,8 @@ face inherit from `default' and remove all other attributes."
      :background "Grey13"
      :foreground "LightSkyBlue1"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-reset
   '((((class color) (background light))
@@ -743,7 +817,8 @@ face inherit from `default' and remove all other attributes."
      :background "IndianRed1"
      :foreground "IndianRed4"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-rebase
   '((((class color) (background light))
@@ -755,7 +830,8 @@ face inherit from `default' and remove all other attributes."
      :background "Grey11"
      :foreground "DarkSeaGreen2"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-cherry-pick
 '((((class color) (background light))
@@ -767,7 +843,8 @@ face inherit from `default' and remove all other attributes."
      :background "light green"
      :foreground "dark olive green"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-remote
   '((((class color) (background light))
@@ -777,7 +854,8 @@ face inherit from `default' and remove all other attributes."
      :box t
      :background "Grey50"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-log-reflog-label-other
   '((((class color) (background light))
@@ -787,7 +865,8 @@ face inherit from `default' and remove all other attributes."
      :box t
      :background "Grey50"))
   "Face for reflog subject labels shown in reflog buffer."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 
 ;;; Keymaps
@@ -3809,7 +3888,8 @@ must return a string which will represent the log line.")
 (defcustom magit-log-author-date-max-length 25
   "max of author-date margin length."
   :type 'integer
-  :group 'magit)
+  :group 'magit
+  :package-version '(magit . "1.3.0"))
 
 (defvar-local magit-log-author-date-string-length nil
   "only use in `*magit-log*' buffer.")

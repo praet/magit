@@ -39,22 +39,26 @@
 (defface magit-key-mode-header-face
   '((t :inherit font-lock-keyword-face))
   "Face for key mode header lines."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-key-mode-button-face
   '((t :inherit font-lock-builtin-face))
   "Face for key mode buttons."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-key-mode-switch-face
   '((t :inherit font-lock-warning-face))
   "Face for key mode switches."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 (defface magit-key-mode-args-face
   '((t :inherit widget-field))
   "Face for key mode switch arguments."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.3.0"))
 
 ;;; Keygroups
 

@@ -42,7 +42,8 @@
 (defcustom magit-svn-externals-dir ".git_externals"
   "Directory from repository root that stores cloned SVN externals."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.3.0"))
 
 ;; git svn commands
 

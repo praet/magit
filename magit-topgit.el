@@ -31,17 +31,20 @@
 (defcustom magit-topgit-executable "tg"
   "The name of the TopGit executable."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.0.0"))
 
 (defcustom magit-topgit-branch-prefix "t/"
   "Convention prefix for topic branch creation."
   :group 'magit
-  :type 'string)
+  :type 'string
+  :package-version '(magit . "1.1.0"))
 
 (defface magit-topgit-current
   '((t :weight bold :inherit magit-branch))
   "Face for section titles."
-  :group 'magit-faces)
+  :group 'magit-faces
+  :package-version '(magit . "1.1.0"))
 
 ;;; Topic branches (using topgit)
 

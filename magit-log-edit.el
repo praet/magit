@@ -32,7 +32,8 @@
 (defcustom magit-log-edit-confirm-cancellation nil
   "Require acknowledgment before canceling the log edit buffer."
   :group 'magit
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "0.7.0"))
 
 (defcustom magit-commit-all-when-nothing-staged 'ask
   "Determine what \\[magit-log-edit] does when nothing is staged.
@@ -46,7 +47,8 @@ will cause all changes to be staged, after a confirmation."
   :type '(choice (const :tag "No" nil)
                  (const :tag "Always" t)
                  (const :tag "Ask" ask)
-                 (const :tag "Ask to stage everything" ask-stage)))
+                 (const :tag "Ask to stage everything" ask-stage))
+  :package-version '(magit . "0.7.0"))
 
 ;;; Keymaps
 

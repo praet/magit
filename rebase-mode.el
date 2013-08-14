@@ -32,29 +32,34 @@
 
 (defgroup rebase-mode nil
   "Customize Rebase Mode"
-  :group 'tools)
+  :group 'tools
+  :package-version '(magit . "1.1.0"))
 
 (defcustom rebase-mode-auto-advance nil
   "If non-nil, moves point forward a line after running an action."
   :group 'rebase-mode
-  :type 'boolean)
+  :type 'boolean
+  :package-version '(magit . "1.3.0"))
 
 (defgroup rebase-mode-faces nil
   "Customize Rebase Mode faces."
   :group 'faces
-  :group 'rebase-mode)
+  :group 'rebase-mode
+  :package-version '(magit . "1.3.0"))
 
 (defface rebase-mode-killed-action-face
   '((((class color))
      :inherit font-lock-comment-face
      :strike-through t))
   "Action lines in the rebase TODO list that have been commented out."
-  :group 'rebase-mode-faces)
+  :group 'rebase-mode-faces
+  :package-version '(magit . "1.1.0"))
 
 (defface rebase-mode-description-face
   '((t :inherit font-lock-comment-face))
   "Face for one-line commit descriptions."
-  :group 'rebase-mode-faces)
+  :group 'rebase-mode-faces
+  :package-version '(magit . "1.1.0"))
 
 (defconst rebase-mode-action-line-re
   (rx
